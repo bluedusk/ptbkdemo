@@ -1,9 +1,14 @@
-export default (state = null, action) => {
-  console.log(action.payload);
+
+export default (state = {process:0}, action) => {
+  console.log("hello");
+
   switch (action.type) {
     case 'open_card':
-      return action.payload;
+      let payload = {};
+      payload.process = 1;
+      return payload;
     default:
+      console.log(11);
       return state;
   }
 };

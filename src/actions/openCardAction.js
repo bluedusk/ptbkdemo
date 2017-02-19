@@ -6,7 +6,6 @@ export const openCard = async () => {
   const url = 'https://reduxblog.herokuapp.com/api/posts';
   //const request = axios.get('https://reduxblog.herokuapp.com/api/posts');
 
-
   try{
     let response = await fetch(url, {
        method: 'POST',

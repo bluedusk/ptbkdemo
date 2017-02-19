@@ -23,8 +23,10 @@ class OpenCard extends Component {
       cardNo:'',
       password:'',
       error: '',
+      result: '',
       process: 0
     }
+
   }
   // async onSubmit(){
   //  console.log('submit button pressed');
@@ -36,6 +38,7 @@ class OpenCard extends Component {
 
   onSubmit(){
    this.props.openCard();
+  //  this.setState({process:1});
   }
 
   onReturn(){
@@ -43,7 +46,7 @@ class OpenCard extends Component {
   }
 
   renderScene(){
-    switch (this.state.process) {
+    switch (this.props.process) {
       case 0:
         return(
           <View style={styles.container}>
@@ -80,12 +83,14 @@ class OpenCard extends Component {
                  color="#841584"
                />
             </View>
+            <Text>{JSON.stringify(this.props.result)}</Text>
+
           </View>
         );
         break;
         case 1:
           return(
-            <Text>case1</Text>
+            <Text>{JSON.stringify(this.props.result)}</Text>
           );
         break;
       default:
@@ -156,8 +161,13 @@ const styles = StyleSheet.create({
   }
 });
 
+function mapStateToProps(state){
+  console.log(state.openCard.process);
+  return {result: state.openCard,process:state.openCard.process}
+}
+
 function mapDispatchToProps(dispatch){
   return bindActionCreators({ openCard }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(OpenCard);
+export default connect(mapStateToProps, mapDispatchToProps)(OpenCard);
