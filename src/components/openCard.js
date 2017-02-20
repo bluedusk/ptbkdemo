@@ -10,35 +10,33 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { openCard } from '../actions/openCardAction';
+import { Input, Card, CardSection, ButtonSet, Spinner } from '../components/common';
 
-
-const ROOT_URL = 'https://reduxblog.herokuapp.com/api';
-const API_KEY = '?key=helloworld';
+// process : [0,1,2,3] = [initState, transactionBegin, transactionFinished]
 
 class OpenCard extends Component {
 
   constructor(props){
+    console.log("constructor called");
     super(props);
     this.state = {
       cardNo:'',
       password:'',
       error: '',
       result: '',
-      process: 0
+      process: props.process,
+      loading: false
     }
 
   }
-  // async onSubmit(){
-  //  console.log('submit button pressed');
-  //  const url = 'https://reduxblog.herokuapp.com/api/posts';
-  //  let response = await fetch(url);
-  //  let res = await response.text();
-  //  console.log(res);
-  // }
+
+  componentWillReceiveProps(props){
+    this.setState({process:props.process});
+  }
 
   onSubmit(){
-   this.props.openCard();
-  //  this.setState({process:1});
+   this.props.openCard(); // trigger action creator
+   this.setState({process:1});
   }
 
   onReturn(){
@@ -46,57 +44,50 @@ class OpenCard extends Component {
   }
 
   renderScene(){
-    switch (this.props.process) {
-      case 0:
+    switch (this.state.process) {
+      // transaction successed
+      case 2:
         return(
-          <View style={styles.container}>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>
-                 卡号:
-               </Text>
-               <TextInput
-                 onChangeText={ (text)=> this.setState({cardNo: text}) }
-                 style={styles.input} placeholder="请刷卡">
-               </TextInput>
-            </View>
-            <View style={styles.inputContainer}>
-              <Text style={styles.label}>
-                 密码:
-               </Text>
-               <TextInput
-                 onChangeText={ (text)=> this.setState({password: text}) }
-                 style={styles.input} placeholder="请输入密码">
-               </TextInput>
-            </View>
-            <Text>{this.state.cardNo}</Text>
-            <View style={styles.btnContainer}>
-              <Button
-                 style={styles.button}
-                 onPress={this.onSubmit.bind(this)}
-                 title="提交"
-                 color="#841584"
-               />
-               <Button
-                 style={styles.button}
-                 onPress={this.onReturn.bind(this)}
-                 title="返回"
-                 color="#841584"
-               />
-            </View>
-            <Text>{JSON.stringify(this.props.result)}</Text>
-
-          </View>
+          <Text>{JSON.stringify(this.props.result)}</Text>
         );
-        break;
-        case 1:
-          return(
-            <Text>{JSON.stringify(this.props.result)}</Text>
-          );
-        break;
+      break;
       default:
-        return(
-          <Text>default</Text>
-        );
+      return(
+        <View>
+          <Card>
+            <CardSection>
+              <Input
+              label='hello'
+              placeholder='please input'
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+              label='卡号'
+              placeholder='please input'
+              onChangeText={ (text)=> this.setState({cardNo: text}) }
+              />
+            </CardSection>
+            <CardSection>
+              <Input
+              label='密码'
+              placeholder='please input'
+              onChangeText={ (text)=> this.setState({password: text}) }
+              />
+            </CardSection>
+
+            {/* <Text>{this.state.cardNo}</Text>
+
+            <Text>{JSON.stringify(this.props.result)}</Text> */}
+          </Card>
+
+          <ButtonSet
+          onPress1={this.onSubmit.bind(this)}
+          onPress2={this.onReturn.bind(this)}
+          />
+          <Spinner show={this.state.process}/>
+        </View>
+      );
 
     }
   }

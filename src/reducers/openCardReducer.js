@@ -1,14 +1,14 @@
 
 export default (state = {process:0}, action) => {
-  console.log("hello");
-
+  console.log(action.payload);
+  let payload = {
+    process:2, // transactionFinished
+    response:action.payload
+  }
   switch (action.type) {
     case 'open_card':
-      let payload = {};
-      payload.process = 1;
       return payload;
     default:
-      console.log(11);
       return state;
   }
 };
