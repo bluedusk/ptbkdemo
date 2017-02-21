@@ -4,7 +4,8 @@ import {
   View,
   TextInput,
   Text,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 // import styles from '../styles/style';
 import { connect } from 'react-redux';
@@ -24,8 +25,7 @@ class OpenCard extends Component {
       password:'',
       error: '',
       result: '',
-      process: props.process,
-      loading: false
+      process: props.process
     }
 
   }
@@ -43,6 +43,18 @@ class OpenCard extends Component {
     this.props.navigator.pop();
   }
 
+  onCardNumFocus(){
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
+      { cancelable: false }
+    );
+  }
   renderScene(){
     switch (this.state.process) {
       // transaction successed
@@ -64,14 +76,15 @@ class OpenCard extends Component {
             <CardSection>
               <Input
               label='卡号'
-              placeholder='please input'
+              placeholder='请刷卡'
+              onFocus={this.onCardNumFocus}
               onChangeText={ (text)=> this.setState({cardNo: text}) }
               />
             </CardSection>
             <CardSection>
               <Input
               label='密码'
-              placeholder='please input'
+              placeholder='请输入密码'
               onChangeText={ (text)=> this.setState({password: text}) }
               />
             </CardSection>
@@ -86,6 +99,7 @@ class OpenCard extends Component {
           onPress2={this.onReturn.bind(this)}
           />
           <Spinner show={this.state.process}/>
+
         </View>
       );
 
@@ -98,59 +112,6 @@ class OpenCard extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    padding: 20
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    padding:10,
-  },
-  btnContainer: {
-    flexDirection: 'row',
-    padding:10,
-    justifyContent: 'center'
-  },
-  input: {
-    height: 30,
-    fontSize: 18,
-    borderWidth: 1,
-    flex:3,
-    borderColor: '#48bbec'
-  },
-  button: {
-    height: 50,
-    backgroundColor: '#48BBEC',
-    alignSelf: 'center',
-    marginTop: 10,
-    borderWidth: 1,
-    borderColor: '#48bbec',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 22,
-    color: '#FFF',
-    alignSelf: 'center'
-  },
-  label: {
-    flex:1,
-    fontSize: 18
-  },
-  error: {
-    color: 'red',
-    paddingTop: 10
-  },
-  success: {
-    color: 'green',
-    paddingTop: 10
-  },
-  loader: {
-    marginTop: 20
-  }
-});
 
 function mapStateToProps(state){
   console.log(state.openCard.process);

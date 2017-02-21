@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, View, Text } from 'react-native';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const Input = ({ label, value, onChangeText, onFocus, onBlur, placeholder, secureTextEntry }) => {
   const { inputStyle, labelStyle, containerStyle } = styles;
 
   return (
@@ -14,6 +14,9 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
         style={inputStyle}
         value={value}
         onChangeText={onChangeText}
+        placeholderTextColor={'#bccfd0'}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     </View>
   );
@@ -21,20 +24,23 @@ const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => 
 
 const styles = {
   inputStyle: {
+    // borderColor:'blue',
+    // borderWidth:1,
+    height:80,
     color: '#000',
     paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 18,
-    lineHeight: 23,
-    flex: 2
+    fontSize: 30,
+    //lineHeight: 100,
+    flex: 3
   },
   labelStyle: {
-    fontSize: 18,
+    fontSize: 30,
     paddingLeft: 20,
     flex: 1
   },
   containerStyle: {
-    height: 40,
+    height: 100,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center'

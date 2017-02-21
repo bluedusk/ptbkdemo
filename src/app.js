@@ -12,6 +12,8 @@ Text
 } from 'react-native';
 import Main from './components/main';
 import OpenCard from './components/openCard';
+import ComponentTest from './components/componentTest';
+import DeviceTest from './components/deviceTest';
 import SignEbank from './components/signEbank';
 import {Header} from './components/common/Header';
 
@@ -29,6 +31,12 @@ class App extends Component {
             case 2:
               return <SignEbank title={route.title} navigator={navigator}/>
               break;
+            case 3:
+              return <ComponentTest title={route.title} navigator={navigator}/>
+              break;
+            case 4:
+              return <DeviceTest title={route.title} navigator={navigator}/>
+              break;
             default:
               return <Text>Something went wrong.</Text>
       }
@@ -40,6 +48,8 @@ class App extends Component {
          {title: 'Main', index: 0},
          {title: 'Open Card', index: 1},
          {title: 'Sign Ebank', index: 2},
+         {title: 'Component Test', index: 3},
+         {title: 'Device Test', index: 2}
     ];
 
     return (
@@ -47,7 +57,7 @@ class App extends Component {
         <View style={{ flex: 1 }}>
           <Header headerText="Portbank" />
           <Navigator
-            initialRoute={routes[0]}
+            initialRoute={routes[3]}
             initialRouteStack={routes}
             renderScene={this.renderScene.bind(this)}
           />

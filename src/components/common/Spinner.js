@@ -21,7 +21,7 @@ const styles = {
     justifyContent: 'center',
     width: width,
     height:height,
-    backgroundColor:'green'
+    backgroundColor:'white'
   }
 };
 

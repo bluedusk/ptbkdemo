@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, TouchableOpacity, Button, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
+import Button from 'apsl-react-native-button';
+
 
 
 const ButtonSet = ({ onPress1, onPress2 }) => {
@@ -13,15 +15,21 @@ const ButtonSet = ({ onPress1, onPress2 }) => {
     // </TouchableOpacity>
     <View style={styles.btnContainer}>
       <Button
-         style={styles.buttonStyle}
-         onPress={onPress1}
-         title="提交"
-       />
-       <Button
-         style={styles.buttonStyle}
-         onPress={onPress2}
-         title="返回"
-       />
+        style={styles.buttonStyle}
+        textStyle={styles.textStyle}
+        isLoading={false}
+        onPress={onPress1}
+        >
+        确定
+      </Button>
+      <Button
+        style={styles.buttonStyle}
+        textStyle={styles.textStyle}
+        isLoading={false}
+        onPress={onPress2}
+        >
+        返回
+      </Button>
     </View>
   );
 };
@@ -29,8 +37,8 @@ const ButtonSet = ({ onPress1, onPress2 }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
-    fontSize: 16,
+    color: 'white',
+    fontSize: 25,
     fontWeight: '600',
     paddingTop: 10,
     paddingBottom: 10
@@ -38,17 +46,18 @@ const styles = {
   buttonStyle: {
     // flex: 1,
     // alignSelf: 'stretch',
-    // backgroundColor: '#fff',
+    backgroundColor: 'blue',
+    width:150,
     // borderRadius: 5,
     // borderWidth: 1,
     // borderColor: '#007aff',
-    // marginLeft: 10,
-    // marginRight: 10,
+    marginLeft: 5,
+    marginRight: 5
     // padding:20
   },
   btnContainer: {
     flexDirection: 'row',
-    padding:10,
+    padding:20,
     justifyContent: 'center'
   }
 };
