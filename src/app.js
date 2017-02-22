@@ -11,10 +11,10 @@ Navigator,
 Text
 } from 'react-native';
 import Main from './components/main';
-import OpenCard from './components/openCard';
+import OpenCard from './components/openCard/openCard';
 import ComponentTest from './components/componentTest';
 import DeviceTest from './components/deviceTest';
-import SignEbank from './components/signEbank';
+import SignEbank from './components/signEbank/signEbank';
 import {Header} from './components/common/Header';
 
 class App extends Component {
@@ -57,7 +57,7 @@ class App extends Component {
         <View style={{ flex: 1 }}>
           <Header headerText="Portbank" />
           <Navigator
-            initialRoute={routes[3]}
+            initialRoute={routes[0]}
             initialRouteStack={routes}
             renderScene={this.renderScene.bind(this)}
           />

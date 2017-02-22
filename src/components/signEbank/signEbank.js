@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, View, StyleSheet } from 'react-native';
-import { Input, Card } from '../components/common'
+import { Input, Card } from '../../components/common'
 
 class SignEbank extends Component {
 
@@ -13,7 +13,6 @@ class SignEbank extends Component {
       result: '',
       process: 0
     }
-
   }
   onSubmit(){
    console.log('button pressed');

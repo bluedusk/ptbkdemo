@@ -10,8 +10,8 @@ import {
 // import styles from '../styles/style';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { openCard } from '../actions/openCardAction';
-import { Input, Card, CardSection, ButtonSet, Spinner } from '../components/common';
+import { openCard } from '../../actions/openCardAction';
+import { Input, Card, CardSection, ButtonSet, Spinner } from '../../components/common';
 
 // process : [0,1,2,3] = [initState, transactionBegin, transactionFinished]
 
