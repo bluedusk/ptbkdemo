@@ -13,14 +13,6 @@ export const signEBank = async (myState) => {
   const url = 'http://rap.taobao.org/mockjsdata/14551/sign_ebank';
   //const request = axios.get('https://reduxblog.herokuapp.com/api/posts');
 	
-/*	
-	console.log('idNo',myState.idNo);
-	console.log('customName',myState.customName);
-	console.log('cardNo',myState.cardNo);
-	console.log('pwd',myState.pwd);
-	console.log('keyType',myState.keyType);
-	console.log('keyNo',myState.keyNo);
-*/	
 	
   
   try{
