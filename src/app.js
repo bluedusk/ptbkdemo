@@ -14,6 +14,7 @@ import Main from './components/main';
 import OpenCard from './components/openCard/openCard';
 import ComponentTest from './components/componentTest';
 import DeviceTest from './components/deviceTest';
+import IdCardCheckMenu from './components/idCardCheck/idCardCheckMenu';
 import SignEbank from './components/signEbank/signEbank';
 import {Header} from './components/common/Header';
 
@@ -24,19 +25,22 @@ class App extends Component {
           switch (route.index) {
             case 0:
               return <Main title={route.title} navigator={navigator}/>
-              break;
+            
             case 1:
               return <OpenCard title={route.title} navigator={navigator}/>
-              break;
+            
             case 2:
               return <SignEbank title={route.title} navigator={navigator}/>
-              break;
+            
             case 3:
               return <ComponentTest title={route.title} navigator={navigator}/>
-              break;
+            
             case 4:
               return <DeviceTest title={route.title} navigator={navigator}/>
-              break;
+           
+            case 5:
+              return <IdCardCheckMenu title={route.title} navigator={navigator}/>
+            
             default:
               return <Text>Something went wrong.</Text>
       }
@@ -49,7 +53,8 @@ class App extends Component {
          {title: 'Open Card', index: 1},
          {title: 'Sign Ebank', index: 2},
          {title: 'Component Test', index: 3},
-         {title: 'Device Test', index: 2}
+         {title: 'Device Test', index: 4},
+         {title: 'IdCard Check Menu', index: 5}
     ];
 
     return (

@@ -1,27 +1,24 @@
 //import axios from 'axios';
 
-export const openCard = async (state) => {
+export const idCardCheck = async (state) => {
 
   let res = {};
   //const url = 'https://reduxblog.herokuapp.com/api/posts';
-  const url = 'http://rap.taobao.org/mockjsdata/14551/opencard';
+  //const url = 'http://rap.taobao.org/mockjsdata/14551/idcheck';
 
 
   //const request = axios.get('https://reduxblog.herokuapp.com/api/posts');
 
   try{
-    let response = await fetch(url, {
+    let response = await fetch(state.url, {
        method: 'POST',
        headers: {
          'Accept': 'application/json',
          'Content-Type': 'application/json',
        },
        body: JSON.stringify({
-         'idNo': '123456789012345678',
-         'name': '考拉',
-         'cardNo':'1234444444444',
-         'password':'888888',
-         'confirmPassword':'888888'
+         'idNo': state.idNo,
+         'name': state.name
        })
      });
 
@@ -32,7 +29,7 @@ export const openCard = async (state) => {
            //Handle success
 
              return{
-               type: 'open_card',
+               type: 'idcard_check',
                payload: res
              }
        } else {

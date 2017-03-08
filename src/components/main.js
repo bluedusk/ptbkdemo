@@ -40,8 +40,9 @@ class Main extends Component {
             设备测试
           </MenuBtn>
           <MenuBtn
+            onPress={this.onPressLearnMore.bind(this,5)}
             imgSource={require('../assets/images/1487664060_navigation.png')}>
-            借记卡开卡
+            身份证核查
           </MenuBtn>
         </View>
 
