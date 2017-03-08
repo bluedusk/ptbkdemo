@@ -1,53 +1,48 @@
 import React, { Component } from 'react';
-import { Modal, Text, TouchableHighlight, View, Image } from 'react-native';
+import { Modal, Text, TouchableHighlight, View, Image, Alert } from 'react-native';
+import ModalWindow from './common/ModalWindow';
 
 export default class ComponentTest extends Component {
 
-  state = {
-    modalVisible: false,
+  constructor(props){
+    super(props);
+    this.state = {
+      modalVisible: true,
+      message:""
+    }
   }
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+  onModalClose(){
+    this.setState({modalVisible: false});
+  }
+
+
+
+  renderTable(){
+    const testData = [{label:'hello',value:'world'},{label:'hello',value:'world'},{label:'hello',value:'world'}];
+    const tableData = this.props.data;
+    return testData.map((item)=>{
+      return(
+        <View style={styles.row}>
+          <Text style={styles.lable}>item.label</Text>
+          <Text style={styles.value}>item.value</Text>
+        </View>
+      );
+    })
+
+
   }
 
   render() {
     return (
-      <View>
-        <Modal
-          animationType={"fade"}
-          transparent={true}
+      <View style={styles.table}>
+
+        {/* <ModalWindow
+          onClose={this.onModalClose.bind(this)}
           visible={this.state.modalVisible}
-          onRequestClose={() => {alert("Modal has been closed.")}}
-          >
-         <View style={styles.viewStyle}>
-          <View style={styles.containerStyle}>
-            <Image source={require('../assets/images/1487664060_navigation.png')}
-              style={styles.imgStyle}
-              />
-            <TouchableHighlight onPress={() => {
-              this.setModalVisible(!this.state.modalVisible)
-            }}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableHighlight>
+          message={this.state.modalMessage}/> */}
 
-            <TouchableHighlight onPress={() => {
-              this.setModalVisible(!this.state.modalVisible)
-            }}>
-              <View style={styles.closeBtnStyle}>
-                <Text>Xccccccccccccc</Text>
-              </View>
-            </TouchableHighlight>
-
-          </View>
-         </View>
-        </Modal>
-
-        <TouchableHighlight onPress={() => {
-          this.setModalVisible(true)
-        }}>
-          <Text style={{fontSize:50}}>Show Modal</Text>
-        </TouchableHighlight>
+        {/* {this.renderTable()} */}
 
       </View>
     );
@@ -56,7 +51,31 @@ export default class ComponentTest extends Component {
 
 
 const styles = {
-  viewStyle: {
+  table: {
+    flexDirection: 'column',
+    borderWidth: 1,
+    borderColor: 'red',
+    margin:15,
+    justifyContent:'flex-start',
+    alignItems: 'center'
+  },
+  row: {
+    flexDirection: 'row',
+    borderWidth: 1,
+    borderColor: 'red',
+    margin:15,
+    justifyContent:'center',
+    alignItems: 'center'
+  },
+  lable: {
+    borderWidth: 1,
+    borderColor: 'red',
+    flex:1,
+    margin:15,
+    justifyContent:'center',
+    alignItems: 'center'
+  },
+  value: {
     borderWidth: 1,
     borderColor: 'red',
     flex:1,
@@ -86,7 +105,7 @@ const styles = {
     backgroundColor:'white'
   },
   textStyle: {
-    fontSize:50,
+    fontSize:30,
     borderWidth: 1,
     borderColor: 'blue'
   },
@@ -100,8 +119,9 @@ const styles = {
     borderColor: 'blue',
 
     position: 'absolute',
-    top: 0,
-    right: 0,
-    alignSelf:'flex-end'
+    // top: 0,
+    right: 0
+
+
   }
 };

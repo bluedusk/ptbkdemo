@@ -17,6 +17,7 @@ const Input = ({ label, value, onChangeText, onFocus, onBlur, placeholder, secur
         placeholderTextColor={'#bccfd0'}
         onFocus={onFocus}
         onBlur={onBlur}
+        underlineColorAndroid='transparent'
       />
     </View>
   );
@@ -30,17 +31,17 @@ const styles = {
     color: '#000',
     paddingRight: 5,
     paddingLeft: 5,
-    fontSize: 30,
+    fontSize: 25,
     //lineHeight: 100,
     flex: 3
   },
   labelStyle: {
-    fontSize: 30,
+    fontSize: 25,
     paddingLeft: 20,
     flex: 1
   },
   containerStyle: {
-    height: 100,
+    height: 80,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center'

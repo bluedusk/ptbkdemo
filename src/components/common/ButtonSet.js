@@ -46,11 +46,11 @@ const styles = {
   buttonStyle: {
     // flex: 1,
     // alignSelf: 'stretch',
-    backgroundColor: 'blue',
+    backgroundColor: '#0af',
     width:150,
     // borderRadius: 5,
     // borderWidth: 1,
-    // borderColor: '#007aff',
+    borderColor: '#fff',
     marginLeft: 5,
     marginRight: 5
     // padding:20

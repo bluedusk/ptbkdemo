@@ -16,6 +16,7 @@ import { openCard } from '../../actions/openCardAction';
 import IdCardCheck from '../idCardCheck/idCardCheck';
 
 import { Input, Card, CardSection, ButtonSet, Spinner } from '../../components/common';
+import Table from '../../components/common/Table';
 
 // process : [0,1,2,3] = [initState, transactionBegin, transactionFinished]
 
@@ -68,14 +69,22 @@ class OpenCard extends Component {
     switch (this.state.process) {
       // transaction successed
       case 2:
+        let result = [
+          {label:"姓名",value:this.state.result.name},
+          {label:"客户号",value:this.state.result.customNo},
+          {label:"身份证号",value:this.state.result.idNo},
+          {label:"开卡日期",value:this.state.result.date},
+          {label:"开卡卡号",value:this.state.result.cardNo}
+        ];
         return(
           <View >
-            <Card>
+            <Table data={result} onReturn={this.onReturn.bind(this)}/>
+            {/* <Card>
               <CardSection>
                 <Text style={styles.labelStyle}>
-                {"姓名：" + this.state.result.name}          
+                {"姓名：" + this.state.result.name}
                 </Text>
-              </CardSection>   
+              </CardSection>
               <CardSection>
                 <Text style={styles.labelStyle}>
                 {"客户号：" + this.state.result.customNo}
@@ -95,27 +104,15 @@ class OpenCard extends Component {
                 <Text style={styles.labelStyle}>
                 {"开卡卡号：" + this.state.result.cardNo}
                 </Text>
-              </CardSection>     
-          </Card>
-          <View style={styles.parent}> 
-            <TouchableHighlight underlayColor='transparent'
-              style={styles.buttonStyle}
-              onPress={this.onReturn.bind(this)} >        
-            <Text style={styles.textStyle}>
-               返回
-             </Text>
-            </TouchableHighlight>
-          </View>
-          <Spinner show={this.state.process}/>
-
+              </CardSection>
+          </Card> */}
         </View>
         );
-    
+
       default:
       return(
         <View>
-          <IdCardCheck>
-          </IdCardCheck>
+
           <Card>
             <CardSection>
               <Input
@@ -158,9 +155,10 @@ class OpenCard extends Component {
             onPress1={this.onSubmit.bind(this)}
             onPress2={this.onReturn.bind(this)}
           />
-          
-          <Spinner show={this.state.process}/>
 
+          <Spinner show={this.state.process}/>
+            <IdCardCheck> 
+            </IdCardCheck>
         </View>
       );
 
@@ -185,7 +183,7 @@ function mapDispatchToProps(dispatch){
 
 export default connect(mapStateToProps, mapDispatchToProps)(OpenCard);
 
-var styles = StyleSheet.create({ 
+var styles = StyleSheet.create({
    parent:{
     alignItems:'center',
     justifyContent:'center',
@@ -198,7 +196,7 @@ var styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 10,
     paddingBottom: 10
-  },   
+  },
   buttonStyle: {
     // flex: 1,
     // alignSelf: 'stretch',

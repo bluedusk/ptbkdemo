@@ -6,3 +6,4 @@ export * from './Input';
 export * from './Spinner';
 export * from './ButtonSet';
 export * from './MenuBtn';
+export * from './Table';

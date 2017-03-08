@@ -19,7 +19,7 @@ const MenuBtn = ({ onPress, imgSource, children }) => {
 const styles = {
   textStyle: {
     alignSelf: 'center',
-    color: '#007aff',
+    // color: '#007aff',
     fontSize: 20,
     fontWeight: '600',
     paddingTop: 10,

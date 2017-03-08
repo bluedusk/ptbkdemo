@@ -25,22 +25,22 @@ class App extends Component {
           switch (route.index) {
             case 0:
               return <Main title={route.title} navigator={navigator}/>
-            
+
             case 1:
               return <OpenCard title={route.title} navigator={navigator}/>
-            
+
             case 2:
               return <SignEbank title={route.title} navigator={navigator}/>
-            
+
             case 3:
               return <ComponentTest title={route.title} navigator={navigator}/>
-            
+
             case 4:
               return <DeviceTest title={route.title} navigator={navigator}/>
-           
+
             case 5:
               return <IdCardCheckMenu title={route.title} navigator={navigator}/>
-            
+
             default:
               return <Text>Something went wrong.</Text>
       }
@@ -60,7 +60,7 @@ class App extends Component {
     return (
       <Provider store={createStore(reducers, applyMiddleware(promise))}>
         <View style={{ flex: 1 }}>
-          <Header headerText="Portbank" />
+          <Header headerText="离行系统" />
           <Navigator
             initialRoute={routes[0]}
             initialRouteStack={routes}
